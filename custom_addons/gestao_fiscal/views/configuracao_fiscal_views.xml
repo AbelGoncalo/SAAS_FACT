@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista de Lista -->
+    <record id="view_configuracao_fiscal_list" model="ir.ui.view">
+        <field name="name">configuracao.fiscal.list</field>
+        <field name="model">configuracao.fiscal</field>
+        <field name="arch" type="xml">
+            <list string="Configurações Fiscais">
+                <field name="empresa_id"/>
+                <field name="regime_iva"/>
+                <field name="data_inicio"/>
+                <field name="data_fim"/>
+                <field name="estado"/>
+            </list>
+        </field>
+    </record>
+    <!-- Vista de Formulário -->
+    <record id="view_configuracao_fiscal_form" model="ir.ui.view">
+        <field name="name">configuracao.fiscal.form</field>
+        <field name="model">configuracao.fiscal</field>
+        <field name="arch" type="xml">
+            <form string="Configuração Fiscal">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="empresa_id"/>
+                            <field name="regime_iva"/>
+                            <field name="estado"/>
+                        </group>
+                        <group>
+                            <field name="data_inicio"/>
+                            <field name="data_fim"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="observacao"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Acção -->
+    <record id="action_configuracao_fiscal" model="ir.actions.act_window">
+        <field name="name">Configurações Fiscais</field>
+        <field name="res_model">configuracao.fiscal</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    
+</odoo>

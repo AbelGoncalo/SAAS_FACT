@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Lista das comunicações fiscais realizadas com a AGT -->
+    <record id="view_comunicacao_fiscal_agt_list" model="ir.ui.view">
+        <field name="name">comunicacao.fiscal.agt.list</field>
+        <field name="model">comunicacao.fiscal.agt</field>
+        <field name="arch" type="xml">
+            <list string="Comunicações AGT">
+                <field name="empresa_id"/>
+                <field name="tipo_operacao"/>
+                <field name="identificador_operacao"/>
+                <field name="estado"/>
+                <field name="data_envio"/>
+                <field name="data_resposta"/>
+                <field name="quantidade_tentativas"/>
+            </list>
+        </field>
+    </record>
+    <!-- Formulário principal de uma comunicação com a AGT -->
+    <record id="view_comunicacao_fiscal_agt_form" model="ir.ui.view">
+        <field name="name">comunicacao.fiscal.agt.form</field>
+        <field name="model">comunicacao.fiscal.agt</field>
+        <field name="arch" type="xml">
+            <form string="Comunicação Fiscal AGT">
+                <header>
+                    <button name="action_criar_tentativa"
+                        string="Processar" type="object" class="btn-primary" 
+                        invisible="estado not in ['pendente', 'erro_tecnico']"
+                    />
+                    <field
+                        name="estado"
+                        widget="statusbar"
+                        statusbar_visible="pendente,em_processamento,sucesso,rejeitada,erro_tecnico,estado_desconhecido"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Identificação">
+                            <field name="empresa_id"/>
+                            <field name="serie_fiscal_id"/>
+                            <field name="tipo_operacao"/>
+                            <field name="identificador_operacao"/>
+                        </group>
+                        <group string="Processamento">
+                            <field name="data_envio"/>
+                            <field name="data_resposta"/>
+                            <field name="codigo_resposta"/>
+                            <field name="quantidade_tentativas"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Tentativas">
+                            <field name="tentativa_ids" readonly="1">
+                                <list create="0" delete="0">
+                                    <field name="numero_tentativa"/>
+                                    <field name="data_inicio"/>
+                                    <field name="data_fim"/>
+                                    <field name="estado"/>
+                                    <field name="codigo_http"/>
+                                    <field name="duracao_ms"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Pedido">
+                            <field name="pedido" nolabel="1"/>
+                        </page>
+                        <page string="Resposta">
+                            <field name="resposta" nolabel="1"/>
+                        </page>
+                        <page string="Erro">
+                            <field name="mensagem_erro" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acção para abrir as comunicações AGT -->
+    <record id="action_comunicacao_fiscal_agt" model="ir.actions.act_window">
+        <field name="name">Comunicações AGT</field>
+        <field name="res_model">comunicacao.fiscal.agt</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+   
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_configuracao_fiscal_user,configuracao.fiscal.user,model_configuracao_fiscal,base.group_user,1,1,1,1
+access_serie_fiscal_user,serie.fiscal.user,model_serie_fiscal,base.group_user,1,1,1,1
+access_comunicacao_fiscal_agt_user,comunicacao.fiscal.agt.user,model_comunicacao_fiscal_agt,base.group_user,1,1,1,1
+access_tentativa_comunicacao_agt_user,tentativa.comunicacao.agt.user,model_tentativa_comunicacao_agt,base.group_user,1,1,1,1
+access_configuracao_integracao_agt_user,configuracao.integracao.agt.user,model_configuracao_integracao_agt,base.group_user,1,1,1,1

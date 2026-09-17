@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- Menu principal do módulo Gestão Fiscal. -->
+    <menuitem
+        id="menu_gestao_fiscal_root"
+        name="Gestão Fiscal"
+        sequence="10"
+    />
+
+
+    <!-- Acesso directo às Séries Fiscais. -->
+    <menuitem
+        id="menu_serie_fiscal"
+        name="Séries"
+        parent="menu_gestao_fiscal_root"
+        action="action_serie_fiscal"
+        sequence="20"
+    />
+
+
+    <!-- Acesso às comunicações realizadas com a AGT. -->
+    <menuitem
+        id="menu_comunicacao_fiscal_agt"
+        name="Comunicações AGT"
+        parent="menu_gestao_fiscal_root"
+        action="action_comunicacao_fiscal_agt"
+        sequence="30"
+    />
+
+
+    <!-- Agrupa as configurações administrativas
+         relacionadas com a Gestão Fiscal. -->
+    <menuitem
+        id="menu_gestao_fiscal_configuracao"
+        name="Configuração"
+        parent="menu_gestao_fiscal_root"
+        sequence="90"
+    />
+
+
+    <!-- Configuração do enquadramento fiscal da empresa. -->
+    <menuitem
+        id="menu_configuracao_fiscal"
+        name="Configurações Fiscais"
+        parent="menu_gestao_fiscal_configuracao"
+        action="action_configuracao_fiscal"
+        sequence="10"
+    />
+
+
+    <!-- Configuração técnica da integração com a AGT. -->
+    <menuitem
+        id="menu_configuracao_integracao_agt"
+        name="Integração AGT"
+        parent="menu_gestao_fiscal_configuracao"
+        action="action_configuracao_integracao_agt"
+        sequence="20"
+    />
+
+
+</odoo>

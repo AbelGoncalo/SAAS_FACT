@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Formulário para consultar uma tentativa técnica de comunicação -->
+    <record id="view_tentativa_comunicacao_agt_form" model="ir.ui.view">
+        <field name="name">tentativa.comunicacao.agt.form</field>
+        <field name="model">tentativa.comunicacao.agt</field>
+        <field name="arch" type="xml">
+            <form string="Tentativa de Comunicação AGT">
+                <header>
+                    <button
+                        name="action_marcar_sucesso"
+                        string="Simular Sucesso"
+                        type="object"
+                        class="btn-primary"
+                        invisible="estado != 'em_processamento'"
+                    />
+                    <button
+                        name="action_marcar_erro_tecnico"
+                        string="Simular Erro Técnico"
+                        type="object"
+                        invisible="estado != 'em_processamento'"
+                    />
+                    <button
+                        name="action_marcar_estado_desconhecido"
+                        string="Simular Estado Desconhecido"
+                        type="object"
+                        invisible="estado != 'em_processamento'"
+                    />
+                    <field
+                        name="estado"
+                        widget="statusbar"
+                        statusbar_visible="em_processamento,sucesso,erro_tecnico,estado_desconhecido"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Identificação">
+                            <field name="comunicacao_id"/>
+                            <field name="numero_tentativa"/>
+                            <field name="estado"/>
+                        </group>
+                        <group string="Processamento">
+                            <field name="data_inicio"/>
+                            <field name="data_fim"/>
+                            <field name="codigo_http"/>
+                            <field name="duracao_ms"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Pedido">
+                            <field name="pedido" nolabel="1"/>
+                        </page>
+                        <page string="Resposta">
+                            <field name="resposta" nolabel="1"/>
+                        </page>
+                        <page string="Erro">
+                            <field name="mensagem_erro" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

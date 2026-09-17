@@ -1,0 +1,31 @@
+# Odoo oficial - repositório separado
+odoo/
+
+# Configuração local do Odoo
+odoo.conf
+
+# Segredos e chaves criptográficas
+secrets/
+*.pem
+*.key
+
+# Ambientes virtuais Python
+venv/
+venv_odoo19/
+venv_backup/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE
+.idea/
+.vscode/
+
+# Teste local temporário
+teste_jws.py
+
+# Logs e temporários
+*.log
+.DS_Store
